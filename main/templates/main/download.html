@@ -1,0 +1,39 @@
+{% extends 'main/base.html' %}
+
+{% block content %}
+    <p class="link-save"><a href="{% url 'save' date=str_date date_end=str_date_end  %}">Скачать</a>
+    <br>
+    <br>
+
+    <ul class="list-articles">
+        {% if day_end != "-" %}
+            {% if day != "все время" %}
+                <p class="first">Отчет за : {{ day }} - {{ day_end }}</p>
+            {% else %}
+                <p class="first">Отчет до : {{ day_end }}</p>
+            {% endif %}
+        {% else %}
+			<p class="first">Отчет за : {{ day }}</p>
+	    {% endif %}
+        <p class="first">Все: {{ all }}</p>
+        <p class="first">Легковой: {{ car }}</p>
+        <p class="first">Грузовой без песка: {{ truck }}</p>
+        <p class="first">Грузовой с песком: {{ full_truck }}</p>
+
+        <li><div class="tablename-panel">
+        <p class="first"> День</p>
+        <p class="second"> Время</p>
+        <p class="third"> Категория</p>
+        <p class="fourth"> Номер</p>
+
+        {% for p in post %}
+            <li><div class="table-panel">
+	        <p class="first"> {{p.time_create}}</p>
+	        <p class="second"> {{p.time_time}}</p>
+            <p class="third"> {{p.cat}}</p>
+            <p class="fourth"> {{p.number}}</p>
+
+        {% endfor %}
+
+{% endblock %}
+

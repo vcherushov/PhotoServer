@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="ru">
+
+    <head>
+	    <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+        <style type="text/css">
+
+    </head>
+    <body>
+		<ul class="list-articles">
+        <p class="first">Отчет за : все время</p>
+        <p class="first">All ааа: {{ all }}</p>
+        <p class="first">Легковой: {{ car }}</p>
+        <p class="first">Грузовой без песка: {{ truck }}</p>
+        <p class="first">Грузовой с песком: {{ full_truck }}</p>
+
+
+        <li><div class="tablename-panel">
+        <p class="first"> День</p>
+        <p class="second"> Время</p>
+        <p class="third"> Категория</p>
+        <p class="fourth"> Номер</p>
+
+        {% for p in post %}
+            <li><div class="table-panel">
+	        <p class="first"> {{p.time_create}}</p>
+	        <p class="second"> {{p.time_time}}</p>
+            <p class="third"> {{p.cat}}</p>
+            <p class="fourth"> {{p.number}}</p>
+
+        {% endfor %}
+
+    </body>
+</html>

@@ -1,0 +1,33 @@
+{% extends 'main/base.html' %}
+
+{% block content %}
+<ul class="list-articles">
+	{% for p in post %}
+	<li><div class="article-panel">
+		{% if p.cat == "car" %}
+			<p class="first">Категория: легковой автомобиль</p>
+		{% endif %}
+		{% if p.cat == "fulltrack" %}
+			<p class="first">Категория: гузовой с песком</p>
+		{% endif %}
+		{% if p.cat == "emptytrack" %}
+			<p class="first">Категория: грузовой без песка</p>
+		{% endif %}
+	<p class="last">Дата: {{p.time_create}} Время: {{p.time_time}}</p>
+</div>
+
+{% if p.photo %}
+	<p><img class="img-article-left thumb" src="{{p.photo.url}}"></p>
+{% endif %}
+
+				<h2>Номер: {{p.number}}</h2>
+	{% autoescape on %}
+	{{p.content|linebreaks|truncatewords:50}}
+	{% endautoescape %}
+			<div class="clear"></div>
+			<p class="link-read-post"><a href="{{ p.get_absolute_url }}">Смотреть</a></p>
+			</li>
+	{% endfor %}
+</ul>
+{% endblock %}
+
